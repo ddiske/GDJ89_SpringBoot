@@ -20,12 +20,14 @@
      	<c:import url="./templates/topbar.jsp"></c:import>
 
 
-     	
-		<!-- content  /.container-fluid  -->
-		<h1>Home</h1>
-		<img alt="" src="/images/1.jpg">
-		<img alt="" src="/images/2.jpg">
-     
+			<!-- content  /.container-fluid  -->
+	    	<div class="container-fluid">
+	    	
+				<h1>Home</h1>
+				<img alt="" src="/images/1.jpg">
+				<img alt="" src="/images/2.jpg">
+	    
+	    	</div>
 		
 	
 		</div>

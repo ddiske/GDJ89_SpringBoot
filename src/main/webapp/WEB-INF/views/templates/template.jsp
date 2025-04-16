@@ -18,13 +18,14 @@
 		<!-- Main Content -->
     	<div id="content">
      	<c:import url="./templates/topbar.jsp"></c:import>
-
-
      	
-		<!-- content  /.container-fluid  -->
-		
-		
-	
+			<!-- content  /.container-fluid  -->
+	    	<div class="container-fluid">
+	    	
+				
+	    
+	    	</div>
+	    	
 		</div>
     	<!-- End of Main Content -->
 	<c:import url="./templates/contentFooter.jsp"></c:import>
