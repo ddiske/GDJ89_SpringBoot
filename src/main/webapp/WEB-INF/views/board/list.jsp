@@ -22,11 +22,9 @@
 			<!-- content  /.container-fluid  -->
 	    	<div class="container-fluid">
 	    		
-				                    <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                    <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-
+				    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">${kind} Tables</h1>
+                    
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -37,11 +35,11 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Num</th>
+                                            <th class="col-1">Num</th>
                                             <th>Title</th>
-                                            <th>User</th>
-                                            <th>Date</th>
-                                            <th>Hit</th>
+                                            <th class="col-1">User</th>
+                                            <th class="col-1">Date</th>
+                                            <th class="col-1">Hit</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -56,6 +54,42 @@
                                         </c:forEach>
                                     </tbody>
                                 </table>
+                            </div>
+                            <div class="row">
+                            	<div class="col">
+                            		<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
+										<div class="input-group">
+											<select name="kind" id="getKind">
+												<option value="title">제목</option>
+												<option value="title+contents">제목+내용</option>
+												<option value="userName">작성자</option>
+											</select>
+											<input type="text" class="form-control bg-light border-0 small"
+												placeholder="Search for..." aria-label="Search"
+												aria-describedby="basic-addon2">
+											<div class="input-group-append">
+												<button class="btn btn-primary" type="button">
+													<i class="fas fa-search fa-sm"></i>
+												</button>
+											</div>
+										</div>
+									</form>
+                            	</div>
+                            	<div class="col">
+                            		<nav aria-label="Page navigation example">
+									  <ul class="pagination justify-content-end">
+									    <li class="page-item disabled">
+									      <a class="page-link">Previous</a>
+									    </li>
+									    <li class="page-item"><a class="page-link" href="#">1</a></li>
+									    <li class="page-item"><a class="page-link" href="#">2</a></li>
+									    <li class="page-item"><a class="page-link" href="#">3</a></li>
+									    <li class="page-item">
+									      <a class="page-link" href="#">Next</a>
+									    </li>
+									  </ul>
+									</nav>
+                            	</div>
                             </div>
                         </div>
                     </div>
