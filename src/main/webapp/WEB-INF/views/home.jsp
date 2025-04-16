@@ -8,5 +8,6 @@
 </head>
 <body>
 	<h1>Home</h1>
+	<img alt="" src="/images/1.jpg">
 </body>
 </html>
