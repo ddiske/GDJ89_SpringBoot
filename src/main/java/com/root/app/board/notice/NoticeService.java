@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.root.app.board.BoardService;
 import com.root.app.board.BoardVO;
+import com.root.app.util.Pager;
 
 @Service
 public class NoticeService implements BoardService {
@@ -15,8 +16,8 @@ public class NoticeService implements BoardService {
 	private NoticeDAO noticeDAO;
 	
 	@Override
-	public List<BoardVO> getList() {
-		List<BoardVO> ar = noticeDAO.getList(); 
+	public List<BoardVO> getList(Pager pager) {
+		List<BoardVO> ar = noticeDAO.getList(pager); 
 		return ar;
 	}
 

@@ -7,8 +7,10 @@
   
 <mapper namespace="com.root.app.board.notice.NoticeDAO">
 
-	<select id="getList" resultType="NoticeVO">
+	<select id="getList" resultType="NoticeVO" parameterType="Pager">
 		SELECT * FROM NOTICE_TBL
+		ORDER BY BOARD_NUM DESC
+		LIMIT #{startNum}, #{perPage}
 	</select>
 	
 	<select id="getDetail" resultType="BoardVO" parameterType="BoardVO">
