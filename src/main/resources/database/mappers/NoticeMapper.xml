@@ -47,4 +47,10 @@
 			</choose>
 	</sql>
 	
+	
+	<update id="update" parameterType="BoardVO">
+		UPDATE NOTICE_TBL
+		SET BOARD_TITLE = #{boardTitle}, BOARD_CONTENTS = #{boardContents}
+		WHERE BOARD_NUM = #{boardNum}
+	</update>
 </mapper>

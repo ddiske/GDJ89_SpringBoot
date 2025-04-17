@@ -25,12 +25,14 @@
 				<div class="col-lg-8">
                     <!-- Post content-->
                     <article>
+                    <div class="card bg-light mb-5">
+                    <div class="card-body">
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">${vo.boardTitle }</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">${vo.boardDate }</div>
+	                            <div class="text-muted fst-italic mb-2">${vo.boardDate }</div>
                             <div class="row">
 	                            <div class="col">조회수 : ${vo.boardHit }</div>
 	                            <div class="col">작성자 : ${vo.userName }</div>
@@ -40,6 +42,12 @@
                         <section class="mb-5">
                             <p class="fs-5 mb-4">${vo.boardContents }</p>
                         </section>
+                        <div class="offset-md-10 align-self-end mb-2">
+	                       	<button class="btn btn-secondary" type="button"><a href="./update?boardNum=${vo.boardNum }">수정</a></button>
+	                       	<button class="btn btn-danger" type="button"><a href="./delete?boardNum=${vo.boardNum }">삭제</a></button>
+                       	</div>                       	
+                    </div>
+                    </div>
                     </article>
                     <!-- Comments section-->
                     <section class="mb-5">

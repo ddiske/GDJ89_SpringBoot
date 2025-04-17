@@ -58,5 +58,19 @@ public class NoticeController {
 		int result = noticeService.add(boardVO);
 		return "redirect:./list";
 	}
+	
+	@GetMapping("update")
+	public String update(BoardVO boardVO, Model model) throws Exception {
+		boardVO = noticeService.getDetail(boardVO);
+		model.addAttribute("vo", boardVO);
+		return "board/update";
+	}
+	
+	@PostMapping("update")
+	public String update(BoardVO boardVO) throws Exception {
+		noticeService.update(boardVO);
+		
+		return "redirect:./detail?boardNum="+boardVO.getBoardNum();
+	}
 
 }

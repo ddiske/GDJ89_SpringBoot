@@ -24,22 +24,23 @@
 	    	
 	    		<div class="col-lg-8">
 				<!-- Post content-->
-				<form action="./add" method="post">
+				<form action="./update" method="post">
                     <article>
                     <div class="card bg-light mb-5">
                     <div class="card-body">
+                    <input type="hidden" name="boardNum" value="${vo.boardNum }">
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">
-                            	<input type="text" name="boardTitle" placeholder="글 제목">
+                            	<input type="text" name="boardTitle" placeholder="${vo.boardTitle }" value="${vo.boardTitle }">
                             </h1>
                             <!-- Post meta content-->
                         </header>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">
-                            	<textarea rows="20" cols="115" name="boardContents" placeholder="내용을 적어주세요"></textarea>
+                            	<textarea rows="20" cols="115" name="boardContents" placeholder="${vo.boardContents }">${vo.boardContents }</textarea>
                             </p>
                         </section>
                     </div>
