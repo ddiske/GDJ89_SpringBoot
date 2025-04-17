@@ -72,5 +72,13 @@ public class NoticeController {
 		
 		return "redirect:./detail?boardNum="+boardVO.getBoardNum();
 	}
+	
+	@PostMapping("delete")
+	public String delete(BoardVO boardVO) throws Exception {
+		
+		noticeService.delete(boardVO);
+		
+		return "redirect:./list";
+	}
 
 }

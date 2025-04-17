@@ -53,4 +53,10 @@
 		SET BOARD_TITLE = #{boardTitle}, BOARD_CONTENTS = #{boardContents}
 		WHERE BOARD_NUM = #{boardNum}
 	</update>
+	
+	<delete id="delete" parameterType="BoardVO">
+		DELETE FROM NOTICE_TBL
+		WHERE BOARD_NUM = #{boardNum}
+	</delete>
+	
 </mapper>

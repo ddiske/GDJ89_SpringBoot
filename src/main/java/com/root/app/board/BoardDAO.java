@@ -15,5 +15,7 @@ public interface BoardDAO {
 	public Long getTotalCount(Pager pager);
 	
 	public int update(BoardVO boardVO);
+	
+	public int delete(BoardVO boardVO);
 
 }

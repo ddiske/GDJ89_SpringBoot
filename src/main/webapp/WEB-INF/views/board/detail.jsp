@@ -44,7 +44,10 @@
                         </section>
                         <div class="offset-md-10 align-self-end mb-2">
 	                       	<button class="btn btn-secondary" type="button"><a href="./update?boardNum=${vo.boardNum }">수정</a></button>
-	                       	<button class="btn btn-danger" type="button"><a href="./delete?boardNum=${vo.boardNum }">삭제</a></button>
+	                       	<form action="./delete" method="post">
+	                       		<input type="hidden" value="${vo.boardNum }" name="boardNum">
+		                       	<button class="btn btn-danger" type="submit">삭제</button>
+	                       	</form>
                        	</div>                       	
                     </div>
                     </div>

@@ -39,4 +39,9 @@ public class NoticeService implements BoardService {
 		return noticeDAO.update(boardVO);
 	}
 
+	@Override
+	public int delete(BoardVO boardVO) {
+		return noticeDAO.delete(boardVO);
+	}
+
 }

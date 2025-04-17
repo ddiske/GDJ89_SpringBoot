@@ -40,7 +40,7 @@
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">
-                            	<textarea rows="20" cols="115" name="boardContents" placeholder="${vo.boardContents }">${vo.boardContents }</textarea>
+                            	<textarea rows="20" cols="115" name="boardContents" id="summernote">${vo.boardContents }</textarea>
                             </p>
                         </section>
                     </div>
@@ -66,5 +66,13 @@
     
 	
 <c:import url="/WEB-INF/views/templates/footer.jsp"></c:import>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote-bs4.min.js"></script>
+<script>
+  $('#summernote').summernote({
+ 	placeholder: '${vo.boardContents }',
+    tabsize: 2,
+    height: 300
+  });
+</script>
 </body>
 </html>

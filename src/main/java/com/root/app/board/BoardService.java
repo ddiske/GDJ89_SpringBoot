@@ -13,5 +13,7 @@ public interface BoardService {
 	public int add(BoardVO boardVO);
 	
 	public int update(BoardVO boardVO);
+	
+	public int delete(BoardVO boardVO);
 
 }
