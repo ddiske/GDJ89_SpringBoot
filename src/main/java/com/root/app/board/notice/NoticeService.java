@@ -17,21 +17,21 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) {
-		pager.make(noticeDAO.getTotalCount());
+		pager.make(noticeDAO.getTotalCount(pager));
 		List<BoardVO> ar = noticeDAO.getList(pager);
 		return ar;
 	}
 
 	@Override
 	public BoardVO getDetail(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		return null;
+		boardVO = noticeDAO.getDetail(boardVO);
+		return boardVO;
 	}
 
 	@Override
 	public int add(BoardVO boardVO) {
-		// TODO Auto-generated method stub
-		return 0;
+		int result = noticeDAO.add(boardVO);
+		return result;
 	}
 
 }

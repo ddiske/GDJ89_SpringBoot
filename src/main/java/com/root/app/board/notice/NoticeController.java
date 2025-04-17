@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.root.app.board.BoardVO;
@@ -35,6 +36,27 @@ public class NoticeController {
 //		model.addAttribute("pager", pager);
 		
 		return "board/list";
+	}
+	
+	@GetMapping("detail")
+	public String getDetail(BoardVO boardVO, Model model) throws Exception {
+		
+		boardVO = noticeService.getDetail(boardVO);
+		model.addAttribute("vo", boardVO);
+		
+		return "board/detail";
+	}
+	
+	@GetMapping("add")
+	public String add() throws Exception {
+		return "board/add";
+	}
+	
+	@PostMapping("add")
+	public String add(BoardVO boardVO) throws Exception {
+		boardVO.setUserName("addTest");
+		int result = noticeService.add(boardVO);
+		return "redirect:./list";
 	}
 
 }

@@ -31,6 +31,11 @@
                             <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
                         <div class="card-body">
+                        <div class="row mb-2">
+	                        <div class="col-2 offset-md-11">
+	                       		<button class="btn btn-secondary" type="button"><a href="./add" style="text-decoration: none;">새 글 작성</a></button>
+	                        </div>
+                        </div>
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -46,7 +51,7 @@
                                         <c:forEach items="${list}" var="vo">
                                         	<tr>
 												<td>${vo.boardNum }</td>
-												<td>${vo.boardTitle }</td>
+												<td><a href="./detail?boardNum=${vo.boardNum }">${vo.boardTitle }</a></td>
 												<td>${vo.userName }</td>                                       	
 												<td>${vo.boardDate }</td>
 												<td>${vo.boardHit }</td>
@@ -60,11 +65,11 @@
                             		<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
 										<div class="input-group">
 											<select name="kind" id="getKind">
-												<option value="k1">제목</option>
-												<option value="k2">제목+내용</option>
-												<option value="k3">작성자</option>
+												<option value="k1" ${pager.kind == 'k1'? 'selected':'' }>제목</option>
+												<option value="k2" ${pager.kind == 'k2'? 'selected':'' }>제목+내용</option>
+												<option value="k3" ${pager.kind == 'k3'? 'selected':'' }>작성자</option>
 											</select>
-											<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="search">
+											<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="search" value="${pager.search}">
 											<div class="input-group-append">
 												<button class="btn btn-primary" type="submit">
 													<i class="fas fa-search fa-sm"></i>
@@ -77,13 +82,13 @@
                             		<nav aria-label="Page navigation example">
 									  <ul class="pagination justify-content-end">
 									    <li class="page-item ${pager.startCheck?'disabled':''}">
-									      <a class="page-link" href="?page=${pager.startBlock-1 }">Previous</a>
+									      <a class="page-link" href="?page=${pager.startBlock-1 }&&kind=${pager.kind}&&search=${pager.search}">Previous</a>
 									    </li>
 									    <c:forEach begin="${pager.startBlock }" end="${pager.endBlock }" var="i">
-										    <li class="page-item ${pager.page == i?'active':''}"><a class="page-link" href="?page=${i }">${i }</a></li>
+										    <li class="page-item ${pager.page == i?'active':''}"><a class="page-link" href="?page=${i }&&kind=${pager.kind}&&search=${pager.search}">${i }</a></li>
 									    </c:forEach>
 									    <li class="page-item ${pager.endCheck?'disabled':''}">
-									      <a class="page-link" href="?page=${pager.endBlock+1 }">Next</a>
+									      <a class="page-link" href="?page=${pager.endBlock+1 }&&kind=${pager.kind}&&search=${pager.search}">Next</a>
 									    </li>
 									  </ul>
 									</nav>

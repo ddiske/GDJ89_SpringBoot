@@ -12,6 +12,6 @@ public interface BoardDAO {
 	
 	public int add(BoardVO boardVO);
 	
-	public Long getTotalCount();
+	public Long getTotalCount(Pager pager);
 
 }
