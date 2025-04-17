@@ -13,6 +13,49 @@ public class Pager {
 	private Long perPage;
 	private Long page;
 	
+	private Long startBlock;
+	private Long endBlock;
+	
+	private boolean startCheck;
+	private boolean endCheck;
+	
+	private String search;
+	private String kind;
+	
+	public void make(Long totalCount) {
+		
+		Long totalPage = totalCount / this.getPerPage();
+		if(totalCount % this.getPerPage() > 0) {
+			totalPage++;
+		}
+		
+		Long totalBlock = totalPage / 5;
+		if(totalPage % 5 > 0) {
+			totalBlock++;
+		}
+		
+		Long curBlock = (this.getPage() + 4) / 5;
+		Long startBlock = curBlock * 5 - 4;
+		Long endBlock = curBlock * 5;
+		
+		this.setStartBlock(startBlock);
+		this.setEndBlock(endBlock);
+		
+		if(curBlock == 1) {
+			this.startCheck = true;
+		}
+		
+		if(curBlock == totalBlock) {
+			this.setEndBlock(totalPage);
+			this.endCheck = true;
+		}
+		
+		if(this.getPage() > totalPage) {
+			this.setPage(totalPage);
+		}
+		
+	}
+	
 	public Long getStartNum() {
 		this.startNum = (this.getPage()-1)*this.getPerPage();
 		return startNum;
@@ -31,6 +74,20 @@ public class Pager {
 			this.page = 1L;
 		}
 		return page;
+	}
+	
+	public String getKind() {
+		if(this.kind == null || this.kind == "") {
+			this.kind = "k1";
+		}
+		return this.kind;
+	}
+	
+	public String getSearch() {
+		if(this.search == null) {
+			this.search = "";
+		}
+		return this.search;
 	}
 
 }

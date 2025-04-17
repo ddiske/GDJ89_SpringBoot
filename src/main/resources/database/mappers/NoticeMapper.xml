@@ -9,6 +9,7 @@
 
 	<select id="getList" resultType="NoticeVO" parameterType="Pager">
 		SELECT * FROM NOTICE_TBL
+		<include refid="search"></include>
 		ORDER BY BOARD_NUM DESC
 		LIMIT #{startNum}, #{perPage}
 	</select>
@@ -30,5 +31,20 @@
 				(#{vo.boardTitle}, #{vo.boardContents}, now(), 0, #{vo.userName})
 			</foreach>
 	</insert>
+	
+	<select id="getTotalCount">
+		SELECT COUNT(BOARD_NUM) FROM NOTICE_TBL
+		<include refid="search"></include>
+	</select>
+	
+	<sql id="search">
+		WHERE BOARD_NUM > 0 AND
+			<choose>
+				<when test="kind=='k1'">BOARD_TITLE LIKE CONCAT('%', #{search}, '%')</when>
+				<when test="kind=='k2'">BOARD_TITLE LIKE CONCAT('%', #{search}, '%') OR BOARD_CONTENTS LIKE CONCAT('%', #{search}, '%')</when>
+				<when test="kind=='k3'">USER_NAME LIKE CONCAT('%', #{search}, '%')</when>
+				<otherwise>BOARD_TITLE LIKE '%'</otherwise>
+			</choose>
+	</sql>
 	
 </mapper>

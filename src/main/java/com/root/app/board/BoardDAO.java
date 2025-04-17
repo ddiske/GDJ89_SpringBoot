@@ -11,5 +11,7 @@ public interface BoardDAO {
 	public BoardVO getDetail(BoardVO boardVO);
 	
 	public int add(BoardVO boardVO);
+	
+	public Long getTotalCount();
 
 }

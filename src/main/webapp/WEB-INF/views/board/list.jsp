@@ -60,13 +60,13 @@
                             		<form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">
 										<div class="input-group">
 											<select name="kind" id="getKind">
-												<option value="title">제목</option>
-												<option value="title+contents">제목+내용</option>
-												<option value="userName">작성자</option>
+												<option value="k1">제목</option>
+												<option value="k2">제목+내용</option>
+												<option value="k3">작성자</option>
 											</select>
-											<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+											<input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" name="search">
 											<div class="input-group-append">
-												<button class="btn btn-primary" type="button">
+												<button class="btn btn-primary" type="submit">
 													<i class="fas fa-search fa-sm"></i>
 												</button>
 											</div>
@@ -76,14 +76,14 @@
                             	<div class="col">
                             		<nav aria-label="Page navigation example">
 									  <ul class="pagination justify-content-end">
-									    <li class="page-item disabled">
-									      <a class="page-link">Previous</a>
+									    <li class="page-item ${pager.startCheck?'disabled':''}">
+									      <a class="page-link" href="?page=${pager.startBlock-1 }">Previous</a>
 									    </li>
-									    <li class="page-item"><a class="page-link" href="#">1</a></li>
-									    <li class="page-item"><a class="page-link" href="#">2</a></li>
-									    <li class="page-item"><a class="page-link" href="#">3</a></li>
-									    <li class="page-item">
-									      <a class="page-link" href="#">Next</a>
+									    <c:forEach begin="${pager.startBlock }" end="${pager.endBlock }" var="i">
+										    <li class="page-item ${pager.page == i?'active':''}"><a class="page-link" href="?page=${i }">${i }</a></li>
+									    </c:forEach>
+									    <li class="page-item ${pager.endCheck?'disabled':''}">
+									      <a class="page-link" href="?page=${pager.endBlock+1 }">Next</a>
 									    </li>
 									  </ul>
 									</nav>

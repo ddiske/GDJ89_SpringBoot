@@ -17,7 +17,8 @@ public class NoticeService implements BoardService {
 	
 	@Override
 	public List<BoardVO> getList(Pager pager) {
-		List<BoardVO> ar = noticeDAO.getList(pager); 
+		pager.make(noticeDAO.getTotalCount());
+		List<BoardVO> ar = noticeDAO.getList(pager);
 		return ar;
 	}
 
