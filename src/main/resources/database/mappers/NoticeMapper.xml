@@ -6,6 +6,7 @@
   <!-- windows -> preferences -> XML(Wild Web Developer) -> Download external... check 후 저장 -->
   
 <mapper namespace="com.root.app.board.notice.NoticeDAO">
+
 	<select id="getList" resultType="NoticeVO">
 		SELECT * FROM NOTICE_TBL
 	</select>
@@ -19,4 +20,13 @@
 		INSERT INTO NOTICE_TBL
 		VALUES (0, #{boardTitle}, #{boardContents}, now(), 0, #{userName})
 	</insert>
+	
+	<insert id="addAll" parameterType="java.util.List">
+		INSERT INTO NOTICE_TBL (BOARD_TITLE, BOARD_CONTENTS, BOARD_DATE, BOARD_HIT, USER_NAME)
+		VALUES
+			<foreach collection="list" item="vo" open="" separator=", " close="">
+				(#{vo.boardTitle}, #{vo.boardContents}, now(), 0, #{vo.userName})
+			</foreach>
+	</insert>
+	
 </mapper>

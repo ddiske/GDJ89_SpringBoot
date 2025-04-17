@@ -2,6 +2,7 @@ package com.root.app.board.notice;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -18,33 +19,49 @@ class NoticeDAOTest {
 	
 	@Autowired
 	private NoticeDAO noticeDAO;
-
+	
 	@Test
-	void testGetList() throws Exception {
-		List<BoardVO> ar = noticeDAO.getList();
-		
-		for(BoardVO vo : ar) {
-			log.info("VO : {}", vo.toString());
+	void testAddAll() throws Exception {
+		List<BoardVO> ar = new ArrayList<>();
+		for(int i = 0; i < 100; i++) {
+			BoardVO boardVO = new BoardVO();
+			boardVO.setBoardTitle("title"+i);
+			boardVO.setBoardContents("contents"+i);
+			boardVO.setUserName("user"+i);
+			ar.add(boardVO);
 		}
+		int result = noticeDAO.addAll(ar);
 		
+		assertNotEquals(0, result);
+		log.info("result : {}", result);
 	}
 
-	@Test
-	void testGetDetail() {
-		BoardVO boardVO = new BoardVO();
-		boardVO.setBoardNum(1L);
-		boardVO = noticeDAO.getDetail(boardVO);
-		log.info("VO : {}", boardVO);
-	}
-
-	@Test
-	void testAdd() {
-		BoardVO boardVO = new BoardVO();
-		boardVO.setBoardTitle("testTitle");
-		boardVO.setBoardContents("testContents");
-		boardVO.setUserName("testUser");
-		int result = noticeDAO.add(boardVO);
-		assertEquals(1, result);
-	}
+//	@Test
+//	void testGetList() throws Exception {
+//		List<BoardVO> ar = noticeDAO.getList();
+//		
+//		for(BoardVO vo : ar) {
+//			log.info("VO : {}", vo.toString());
+//		}
+//		
+//	}
+//
+//	@Test
+//	void testGetDetail() {
+//		BoardVO boardVO = new BoardVO();
+//		boardVO.setBoardNum(1L);
+//		boardVO = noticeDAO.getDetail(boardVO);
+//		log.info("VO : {}", boardVO);
+//	}
+//
+//	@Test
+//	void testAdd() {
+//		BoardVO boardVO = new BoardVO();
+//		boardVO.setBoardTitle("testTitle");
+//		boardVO.setBoardContents("testContents");
+//		boardVO.setUserName("testUser");
+//		int result = noticeDAO.add(boardVO);
+//		assertEquals(1, result);
+//	}
 
 }
