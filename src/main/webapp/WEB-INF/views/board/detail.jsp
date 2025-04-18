@@ -44,7 +44,8 @@
                         </section>
                         <div class="">
                         	<c:forEach items="${vo.boardFileVOs }" var="f">
-                        		<img alt="" src="/files/${kind }/${f.fileName}">${f.oldName }
+                        		<%-- <img alt="" src="/files/${kind }/${f.fileName}">${f.oldName } --%>
+                        		<a href="./fileDown?fileNum=${f.fileNum }">${f.oldName }</a>
                         	</c:forEach>
                         </div>
                         <div class="offset-md-10 align-self-end mb-2">

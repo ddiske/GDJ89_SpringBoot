@@ -17,5 +17,7 @@ public interface BoardService {
 	public int update(BoardVO boardVO) throws Exception;
 	
 	public int delete(BoardVO boardVO) throws Exception;
+	
+	public BoardFileVO getFileDetail(BoardFileVO boardFileVO) throws Exception;
 
 }

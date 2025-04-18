@@ -35,6 +35,11 @@
 		</collection>
 	</resultMap>
 	
+	<select id="getFileDetail" parameterType="BoardFileVO" resultType="BoardFileVO">
+		SELECT * FROM NOTICE_FILES_TBL
+		WHERE FILE_NUM = #{fileNum}
+	</select>
+	
 	<insert id="add" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boardNum">
 		INSERT INTO NOTICE_TBL
 		VALUES (0, #{boardTitle}, #{boardContents}, now(), 0, #{userName})
