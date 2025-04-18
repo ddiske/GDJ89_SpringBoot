@@ -14,12 +14,28 @@
 		LIMIT #{startNum}, #{perPage}
 	</select>
 	
-	<select id="getDetail" resultType="BoardVO" parameterType="BoardVO">
+	<select id="getDetail" resultMap="getDetailResult" parameterType="BoardVO">
 		SELECT * FROM NOTICE_TBL
+		LEFT OUTER JOIN NOTICE_FILES_TBL
+		USING (BOARD_NUM)
 		WHERE BOARD_NUM = #{boardNum}
 	</select>
 	
-	<insert id="add" parameterType="BoardVO">
+	<resultMap type="BoardVO" id="getDetailResult">
+		<id column="BOARD_NUM" property="boardNum"/>
+		<result column="BOARD_TITLE" property="boardTitle"/>
+		<result column="BOARD_CONTENTS" property="boardContents"/>
+		<result column="BOARD_DATE" property="boardDate"/>
+		<result column="BOARD_HIT" property="boardHit"/>
+		<result column="USER_NAME" property="userName"/>
+		<collection property="boardFileVOs" javaType="List" ofType="BoardFileVO">
+			<id column="FILE_NUM" property="fileNum"/>
+			<result column="FILE_NAME" property="fileName"/>
+			<result column="OLD_NAME" property="oldName"/>
+		</collection>
+	</resultMap>
+	
+	<insert id="add" parameterType="BoardVO" useGeneratedKeys="true" keyProperty="boardNum">
 		INSERT INTO NOTICE_TBL
 		VALUES (0, #{boardTitle}, #{boardContents}, now(), 0, #{userName})
 	</insert>
@@ -47,6 +63,10 @@
 			</choose>
 	</sql>
 	
+	<insert id="addFile" parameterType="BoardFileVO">
+		INSERT INTO NOTICE_FILES_TBL (FILE_NAME, OLD_NAME, BOARD_NUM)
+		VALUES (#{fileName}, #{oldName}, #{boardNum})
+	</insert>
 	
 	<update id="update" parameterType="BoardVO">
 		UPDATE NOTICE_TBL

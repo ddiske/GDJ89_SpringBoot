@@ -10,10 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.root.app.board.BoardVO;
 import com.root.app.util.Pager;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 @RequestMapping("/notice/*")
 public class NoticeController {
@@ -53,9 +58,10 @@ public class NoticeController {
 	}
 	
 	@PostMapping("add")
-	public String add(BoardVO boardVO) throws Exception {
+	public String add(BoardVO boardVO, @RequestParam(name = "attaches") MultipartFile [] attaches) throws Exception {
+		
 		boardVO.setUserName("addTest");
-		int result = noticeService.add(boardVO);
+		int result = noticeService.add(boardVO, attaches);
 		return "redirect:./list";
 	}
 	

@@ -38,20 +38,20 @@ public class Pager {
 		Long startBlock = curBlock * 5 - 4;
 		Long endBlock = curBlock * 5;
 		
-		this.setStartBlock(startBlock);
-		this.setEndBlock(endBlock);
+		this.startBlock = startBlock;
+		this.endBlock = endBlock;
 		
 		if(curBlock == 1) {
 			this.startCheck = true;
 		}
 		
 		if(curBlock == totalBlock) {
-			this.setEndBlock(totalPage);
+			this.endBlock = totalPage;
 			this.endCheck = true;
 		}
 		
 		if(this.getPage() > totalPage) {
-			this.setPage(totalPage);
+			this.page = totalPage;
 		}
 		
 	}

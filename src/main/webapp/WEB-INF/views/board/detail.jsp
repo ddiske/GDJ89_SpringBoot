@@ -42,13 +42,18 @@
                         <section class="mb-5">
                             <p class="fs-5 mb-4">${vo.boardContents }</p>
                         </section>
+                        <div class="">
+                        	<c:forEach items="${vo.boardFileVOs }" var="f">
+                        		<img alt="" src="/files/${kind }/${f.fileName}">${f.oldName }
+                        	</c:forEach>
+                        </div>
                         <div class="offset-md-10 align-self-end mb-2">
 	                       	<button class="btn btn-secondary" type="button"><a href="./update?boardNum=${vo.boardNum }">수정</a></button>
 	                       	<form action="./delete" method="post">
 	                       		<input type="hidden" value="${vo.boardNum }" name="boardNum">
 		                       	<button class="btn btn-danger" type="submit">삭제</button>
 	                       	</form>
-                       	</div>                       	
+                        </div>                      	
                     </div>
                     </div>
                     </article>

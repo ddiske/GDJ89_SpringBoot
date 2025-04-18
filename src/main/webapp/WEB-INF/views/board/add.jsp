@@ -24,7 +24,7 @@
 	    	
 	    		<div class="col-lg-8">
 				<!-- Post content-->
-				<form action="./add" method="post">
+				<form action="./add" method="post" enctype="multipart/form-data">
                     <article>
                     <div class="card bg-light mb-5">
                     <div class="card-body">
@@ -42,6 +42,11 @@
                             	<textarea rows="20" cols="115" name="boardContents" id="summernote"></textarea>
                             </p>
                         </section>
+                        <div>
+                        	<input type="file" name="attaches">
+                        	<input type="file" name="attaches">
+                        	<input type="file" name="attaches">
+                        </div>
                     </div>
                     </div>
                     </article>
